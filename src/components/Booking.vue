@@ -145,6 +145,9 @@ button {
 }
 
 @media (max-width: 550px) {
+  .bookingContainer {
+    width: 80%;
+  }
   label {
     font-size: 12px;
   }

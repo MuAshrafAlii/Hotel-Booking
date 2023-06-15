@@ -280,7 +280,7 @@ export default {
   color: white;
   font-weight: 800;
   cursor: pointer;
-  border-radius: 20%;
+  border-radius: 10%;
   padding: 1em;
   font-size: 15px;
 }

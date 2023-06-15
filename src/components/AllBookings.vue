@@ -313,10 +313,11 @@ export default {};
 @media (max-width: 600px) {
   .hotelDetailsContainer {
     flex-direction: column;
+    width: 100%;
   }
 
   .imgContainer {
-    width: 100%;
+    width: 80%;
     height: 30vh;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
       rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
