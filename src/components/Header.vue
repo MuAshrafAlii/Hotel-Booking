@@ -1,18 +1,17 @@
 <template>
-  <div class="loaderContainer" v-if="loading">
-    <LoaderVue />
-  </div>
   <div class="headerContainer" @scroll="navScrollHandler">
     <div class="navContainer" ref="navContainer">
       <div class="logoContainer">
-        <router-link to="/" class="title"
+        <router-link :to="{ name: 'home' }" class="title"
           ><img src="/imgs/logo.png" alt="HotelPro"
         /></router-link>
       </div>
 
       <nav>
-        <router-link to="/" active-class="active-link">All Hotels</router-link>
-        <router-link to="/all-bookings" active-class="active-link"
+        <router-link :to="{ name: 'home' }" active-class="active-link"
+          >All Hotels</router-link
+        >
+        <router-link :to="{ name: 'allBookings' }" active-class="active-link"
           >All Bookings</router-link
         >
       </nav>
@@ -25,18 +24,11 @@
 </template>
 
 <script>
-import { computed, onBeforeUnmount, onMounted, ref } from "vue";
-import LoaderVue from "./Loader.vue";
-import { useStore } from "vuex";
+import { onBeforeUnmount, onMounted, ref } from "vue";
 
 export default {
-  components: {
-    LoaderVue,
-  },
   setup() {
     const navContainer = ref(null);
-    const store = useStore();
-    const loading = computed(() => store.state.loading);
 
     const navScrollHandler = (e) => {
       if (window.scrollY > 150) {
@@ -48,14 +40,13 @@ export default {
 
     onMounted(() => {
       window.addEventListener("scroll", navScrollHandler);
-      store.commit("setLoading", false);
     });
 
     onBeforeUnmount(() => {
       window.removeEventListener("scroll", navScrollHandler);
     });
 
-    return { navContainer, navScrollHandler, loading };
+    return { navContainer, navScrollHandler };
   },
 };
 </script>
@@ -85,6 +76,7 @@ export default {
   transition: all 0.3s;
   padding: 0px 10vw;
   box-sizing: border-box;
+  min-height: 80px;
 }
 
 .logoContainer {

@@ -7,14 +7,7 @@
 </template>
 
 <script>
-export default {
-  props: {
-    loading: {
-      type: Boolean,
-      required: true,
-    },
-  },
-};
+export default {};
 </script>
 
 <style scoped>
