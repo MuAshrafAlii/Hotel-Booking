@@ -1,15 +1,17 @@
 <template>
   <div class="allHotelsContainer">
-    <div class="hotelContainer">
+    <div class="hotelContainer" v-for="hotel in allHotels" :key="hotel.id">
       <div class="imgContainer">
-        <img src="/imgs/hotelbkgr.jpg" alt="Hotel" />
+        <img :src="hotel.image" alt="Hotel" />
       </div>
 
       <div class="titleRatingContainer">
-        <h1 class="hotelName">Hotel Title</h1>
+        <h1 class="hotelName">{{ hotel.name }}</h1>
         <div class="rating">
           <span v-for="i in 5" :key="i">
-            <i :class="i <= 3 ? 'fa fa-star active' : 'fa fa-star'"></i>
+            <i
+              :class="i <= hotel.rating ? 'fa fa-star active' : 'fa fa-star'"
+            ></i>
           </span>
         </div>
       </div>
@@ -17,34 +19,9 @@
       <div class="detailsContainer">
         <p class="addressContainer">
           <i class="fa-solid fa-location-dot"></i>
-          <span class="location"> Alexandria,Egypt </span>
-        </p>
-
-        <router-link :to="{ name: 'bookingForm' }"
-          ><button class="bookBtn">Book Now</button></router-link
-        >
-      </div>
-    </div>
-
-    <!-- wwwwwww -->
-    <div class="hotelContainer">
-      <div class="imgContainer">
-        <img src="/imgs/hotelbkgr.jpg" alt="Hotel" />
-      </div>
-
-      <div class="titleRatingContainer">
-        <h1 class="hotelName">Hotel Title</h1>
-        <div class="rating">
-          <span v-for="i in 5" :key="i">
-            <i :class="i <= 3 ? 'fa fa-star active' : 'fa fa-star'"></i>
+          <span class="location">
+            {{ hotel.address }}
           </span>
-        </div>
-      </div>
-
-      <div class="detailsContainer">
-        <p class="addressContainer">
-          <i class="fa-solid fa-location-dot"></i>
-          <span class="location"> Alexandria,Egypt </span>
         </p>
 
         <router-link :to="{ name: 'bookingForm' }"
@@ -52,176 +29,32 @@
         >
       </div>
     </div>
-
-    <div class="hotelContainer">
-      <div class="imgContainer">
-        <img src="/imgs/hotelbkgr.jpg" alt="Hotel" />
-      </div>
-
-      <div class="titleRatingContainer">
-        <h1 class="hotelName">Hotel Title</h1>
-        <div class="rating">
-          <span v-for="i in 5" :key="i">
-            <i :class="i <= 3 ? 'fa fa-star active' : 'fa fa-star'"></i>
-          </span>
-        </div>
-      </div>
-
-      <div class="detailsContainer">
-        <p class="addressContainer">
-          <i class="fa-solid fa-location-dot"></i>
-          <span class="location"> Alexandria,Egypt </span>
-        </p>
-
-        <router-link :to="{ name: 'bookingForm' }"
-          ><button class="bookBtn">Book Now</button></router-link
-        >
-      </div>
-    </div>
-
-    <div class="hotelContainer">
-      <div class="imgContainer">
-        <img src="/imgs/hotelbkgr.jpg" alt="Hotel" />
-      </div>
-
-      <div class="titleRatingContainer">
-        <h1 class="hotelName">Hotel Title</h1>
-        <div class="rating">
-          <span v-for="i in 5" :key="i">
-            <i :class="i <= 3 ? 'fa fa-star active' : 'fa fa-star'"></i>
-          </span>
-        </div>
-      </div>
-
-      <div class="detailsContainer">
-        <p class="addressContainer">
-          <i class="fa-solid fa-location-dot"></i>
-          <span class="location"> Alexandria,Egypt </span>
-        </p>
-
-        <router-link :to="{ name: 'bookingForm' }"
-          ><button class="bookBtn">Book Now</button></router-link
-        >
-      </div>
-    </div>
-
-    <div class="hotelContainer">
-      <div class="imgContainer">
-        <img src="/imgs/hotelbkgr.jpg" alt="Hotel" />
-      </div>
-
-      <div class="titleRatingContainer">
-        <h1 class="hotelName">Hotel Title</h1>
-        <div class="rating">
-          <span v-for="i in 5" :key="i">
-            <i :class="i <= 3 ? 'fa fa-star active' : 'fa fa-star'"></i>
-          </span>
-        </div>
-      </div>
-
-      <div class="detailsContainer">
-        <p class="addressContainer">
-          <i class="fa-solid fa-location-dot"></i>
-          <span class="location"> Alexandria,Egypt </span>
-        </p>
-
-        <router-link :to="{ name: 'bookingForm' }"
-          ><button class="bookBtn">Book Now</button></router-link
-        >
-      </div>
-    </div>
-
-    <div class="hotelContainer">
-      <div class="imgContainer">
-        <img src="/imgs/hotelbkgr.jpg" alt="Hotel" />
-      </div>
-
-      <div class="titleRatingContainer">
-        <h1 class="hotelName">Hotel Title</h1>
-        <div class="rating">
-          <span v-for="i in 5" :key="i">
-            <i :class="i <= 3 ? 'fa fa-star active' : 'fa fa-star'"></i>
-          </span>
-        </div>
-      </div>
-
-      <div class="detailsContainer">
-        <p class="addressContainer">
-          <i class="fa-solid fa-location-dot"></i>
-          <span class="location"> Alexandria,Egypt </span>
-        </p>
-
-        <router-link :to="{ name: 'bookingForm' }"
-          ><button class="bookBtn">Book Now</button></router-link
-        >
-      </div>
-    </div>
-
-    <div class="hotelContainer">
-      <div class="imgContainer">
-        <img src="/imgs/hotelbkgr.jpg" alt="Hotel" />
-      </div>
-
-      <div class="titleRatingContainer">
-        <h1 class="hotelName">Hotel Title</h1>
-        <div class="rating">
-          <span v-for="i in 5" :key="i">
-            <i :class="i <= 3 ? 'fa fa-star active' : 'fa fa-star'"></i>
-          </span>
-        </div>
-      </div>
-
-      <div class="detailsContainer">
-        <p class="addressContainer">
-          <i class="fa-solid fa-location-dot"></i>
-          <span class="location"> Alexandria,Egypt </span>
-        </p>
-
-        <router-link :to="{ name: 'bookingForm' }"
-          ><button class="bookBtn">Book Now</button></router-link
-        >
-      </div>
-    </div>
-
-    <div class="hotelContainer">
-      <div class="imgContainer">
-        <img src="/imgs/hotelbkgr.jpg" alt="Hotel" />
-      </div>
-
-      <div class="titleRatingContainer">
-        <h1 class="hotelName">Hotel Title</h1>
-        <div class="rating">
-          <span v-for="i in 5" :key="i">
-            <i :class="i <= 3 ? 'fa fa-star active' : 'fa fa-star'"></i>
-          </span>
-        </div>
-      </div>
-
-      <div class="detailsContainer">
-        <p class="addressContainer">
-          <i class="fa-solid fa-location-dot"></i>
-          <span class="location"> Alexandria,Egypt </span>
-        </p>
-
-        <router-link :to="{ name: 'bookingForm' }"
-          ><button class="bookBtn">Book Now</button></router-link
-        >
-      </div>
-    </div>
-
-    <!-- wwwwwww -->
   </div>
+
+  <div></div>
 </template>
 
 <script>
 import { ref } from "vue";
 export default {
   setup() {
-    const rating = 3;
+    const allHotels = ref([]);
 
-    let sasa = "hii you";
+    const loadHotels = async () => {
+      try {
+        let allHotelsResponse = await fetch("http://localhost:3000/hotels");
+        if (!allHotelsResponse.ok) {
+          throw Error("No Hotels Available");
+        }
+        allHotels.value = await allHotelsResponse.json();
+      } catch (err) {
+        console.log(err.message);
+      }
+    };
 
-    return { rating, sasa };
+    loadHotels();
+
+    return { rating, allHotels };
   },
 };
 </script>
@@ -265,6 +98,13 @@ export default {
   height: 90px;
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
+}
+
+.addressContainer {
+  width: 40%;
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 

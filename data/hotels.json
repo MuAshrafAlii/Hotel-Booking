@@ -1,0 +1,53 @@
+{
+  "hotels": [
+    {
+      "id": 1,
+      "name": "The Plaza",
+      "rating": 2,
+      "address": "768 5th Ave, New York, NY 10019",
+      "image": "https://images.unsplash.com/photo-1625244724120-1fd1d34d00f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+    },
+    {
+      "id": 2,
+      "name": "Waldorf Astoria",
+      "rating": 4,
+      "address": "301 Park Ave, New York, NY 10022",
+      "image": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
+    },
+    {
+      "id": 3,
+      "name": "St. Regis",
+      "rating": 5,
+      "address": "2 East 55th Street, New York, NY 10022",
+      "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
+    },
+    {
+      "id": 4,
+      "name": "MGM Grand",
+      "rating": 3,
+      "address": "3799 S Las Vegas Blvd, Las Vegas, NV 89109",
+      "image": "https://images.unsplash.com/photo-1535827841776-24afc1e255ac?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=435&q=80"
+    },
+    {
+      "id": 5,
+      "name": "Burj Al Arab",
+      "rating": 1,
+      "address": "Jumeirah St - Umm Suqeim 3 - Dubai - United Arab Emirates",
+      "image": "https://images.unsplash.com/photo-1590447158019-883d8d5f8bc7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1032&q=80"
+    },
+    {
+      "id": 6,
+      "name": "Marriott Marquis",
+      "rating": 5,
+      "address": "1535 Broadway, New York, NY 10036",
+      "image": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1032&q=80"
+    },
+    {
+      "id": 7,
+      "name": "Mandarin Oriental",
+      "rating": 4,
+      "address": "5 Connaught Rd Central, Central, Hong Kong",
+      "image": "https://images.unsplash.com/photo-1549294413-26f195200c16?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=464&q=80"
+    }
+  ]
+}

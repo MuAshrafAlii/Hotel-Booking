@@ -1,21 +1,6 @@
 <template>
   <div class="headerContainer" @scroll="navScrollHandler">
-    <div class="navContainer" ref="navContainer">
-      <div class="logoContainer">
-        <router-link :to="{ name: 'home' }" class="title"
-          ><img src="/imgs/logo.png" alt="HotelPro"
-        /></router-link>
-      </div>
-
-      <nav>
-        <router-link :to="{ name: 'home' }" active-class="active-link"
-          >All Hotels</router-link
-        >
-        <router-link :to="{ name: 'allBookings' }" active-class="active-link"
-          >All Bookings</router-link
-        >
-      </nav>
-    </div>
+    <navBarVue />
 
     <div class="title">
       <h1>Welcome to HotelPro</h1>
@@ -24,29 +9,11 @@
 </template>
 
 <script>
-import { onBeforeUnmount, onMounted, ref } from "vue";
+import navBarVue from "./navBar.vue";
 
 export default {
-  setup() {
-    const navContainer = ref(null);
-
-    const navScrollHandler = (e) => {
-      if (window.scrollY > 150) {
-        navContainer.value.classList.add("scrolled");
-      } else {
-        navContainer.value.classList.remove("scrolled");
-      }
-    };
-
-    onMounted(() => {
-      window.addEventListener("scroll", navScrollHandler);
-    });
-
-    onBeforeUnmount(() => {
-      window.removeEventListener("scroll", navScrollHandler);
-    });
-
-    return { navContainer, navScrollHandler };
+  components: {
+    navBarVue,
   },
 };
 </script>
@@ -64,63 +31,6 @@ export default {
   align-items: center;
 }
 
-.navContainer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 15vh;
-  position: fixed;
-  top: 0px;
-  z-index: 20;
-  width: 100%;
-  transition: all 0.3s;
-  padding: 0px 10vw;
-  box-sizing: border-box;
-  min-height: 80px;
-}
-
-.logoContainer {
-  width: 10%;
-  height: 100%;
-}
-
-.logoContainer img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-nav > a {
-  background: white;
-  padding: 10px;
-  text-decoration: none;
-  font-size: 20px;
-  border-radius: 10%;
-  color: black;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.navContainer.scrolled {
-  background-color: white;
-  transition: all 0.3s;
-}
-
-.navContainer.scrolled > nav > a {
-  color: white;
-  background: #0f526d;
-  transition: all 0.3s;
-}
-
-nav > a:last-child {
-  margin-left: 10px;
-}
-
-.active-link {
-  text-decoration-line: underline;
-  text-decoration-style: double;
-}
-
 .title {
   font-size: 40px;
   letter-spacing: 20;
@@ -132,23 +42,11 @@ nav > a:last-child {
   .title {
     font-size: 30px;
   }
-
-  nav > a {
-    font-size: 15px;
-  }
 }
 
 @media (max-width: 600px) {
   .title {
     font-size: 15px;
-  }
-
-  .logoContainer {
-    width: 25%;
-  }
-
-  nav > a {
-    font-size: 10px;
   }
 }
 </style>

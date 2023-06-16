@@ -8,7 +8,7 @@
 <style scoped>
 .footerContainer {
   width: 100%;
-  height: 14vh;
+  min-height: 14vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
