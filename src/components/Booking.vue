@@ -57,17 +57,21 @@
 
   <div class="thankYouContainer" v-else>
     <h1>Thank You For Booking with us</h1>
+    <p>Wait to be redirected</p>
     <i class="fa-solid fa-check"></i>
   </div>
 </template>
 
 <script>
 import { computed, onMounted, ref } from "vue";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
+import setBooking from "../composables/setBooking";
 
 export default {
   setup() {
     const route = useRoute();
+    const router = useRouter();
+    let { setBookingStatus } = setBooking();
     const id = computed(() => {
       return route.params.id;
     });
@@ -156,31 +160,16 @@ export default {
       validatePhone();
 
       if (!userNameError.value && !emailError.value && !phoneError.value) {
-        try {
-          let dataSentRequest = await fetch("http://localhost:3000/bookings", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              hotelID: id.value,
-              userName: userName.value,
-              email: email.value,
-              phone: phone.value,
-            }),
-          });
+        setBookingStatus(id.value, true);
 
-          if (!dataSentRequest.ok) {
-            throw new Error("Data was not sent");
-          }
+        userName.value = "";
+        email.value = "";
+        phone.value = "";
+        formSubmitted.value = true;
 
-          userName.value = "";
-          email.value = "";
-          phone.value = "";
-          formSubmitted.value = true;
-        } catch (err) {
-          console.log(err.msg);
-        }
+        setTimeout(() => {
+          router.push("/");
+        }, 3000);
       }
     };
 

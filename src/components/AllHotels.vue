@@ -25,8 +25,16 @@
         </p>
 
         <router-link :to="{ name: 'bookingForm', params: { id: hotel.id } }"
-          ><button class="bookBtn">Book Now</button></router-link
+          ><button class="bookBtn" v-if="!hotel.booked">Book Now</button>
+        </router-link>
+        <button
+          class="cancelBtn"
+          v-if="hotel.booked"
+          :hotelID="hotel.id"
+          @click="cancelBooking"
         >
+          Cancel Booking
+        </button>
       </div>
     </div>
   </div>
@@ -35,26 +43,28 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import setBooking from "@/composables/setBooking.js";
+import getHotels from "../composables/getHotels.js";
+import { useRouter } from "vue-router";
+
 export default {
   setup() {
-    const allHotels = ref([]);
+    let router = useRouter();
 
-    const loadHotels = async () => {
-      try {
-        let allHotelsResponse = await fetch("http://localhost:3000/hotels");
-        if (!allHotelsResponse.ok) {
-          throw Error("No Hotels Available");
-        }
-        allHotels.value = await allHotelsResponse.json();
-      } catch (err) {
-        console.log(err.message);
-      }
-    };
+    let { allHotels, loadHotels } = getHotels();
+
+    let { setBookingStatus } = setBooking();
 
     loadHotels();
 
-    return { allHotels };
+    function cancelBooking(e) {
+      let hotelID = e.target.getAttribute("hotelid");
+
+      setBookingStatus(hotelID, false);
+      router.go();
+    }
+
+    return { allHotels, cancelBooking };
   },
 };
 </script>
@@ -113,15 +123,22 @@ export default {
   font-size: 15px;
 }
 
-.detailsContainer .bookBtn {
+.detailsContainer button {
   border: none;
   outline: none;
-  background: #198754;
   color: white;
   font-weight: 800;
   cursor: pointer;
   border-radius: 10%;
   padding: 1em;
   font-size: 15px;
+}
+
+.cancelBtn {
+  background-color: #dc3545;
+}
+
+.bookBtn {
+  background: #198754;
 }
 </style>
