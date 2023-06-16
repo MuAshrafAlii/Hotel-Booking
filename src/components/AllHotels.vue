@@ -24,7 +24,7 @@
           </span>
         </p>
 
-        <router-link :to="{ name: 'bookingForm' }"
+        <router-link :to="{ name: 'bookingForm', params: { id: hotel.id } }"
           ><button class="bookBtn">Book Now</button></router-link
         >
       </div>
@@ -54,7 +54,7 @@ export default {
 
     loadHotels();
 
-    return { rating, allHotels };
+    return { allHotels };
   },
 };
 </script>

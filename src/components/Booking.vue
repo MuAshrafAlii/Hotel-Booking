@@ -1,11 +1,11 @@
 <template>
-  <div class="bookingContainer">
+  <div class="bookingContainer" v-if="!formSubmitted">
     <div class="imgContainer">
       <img src="/imgs/hotelbkgr.jpg" alt="Hotel Image" />
     </div>
 
     <div class="formContainer">
-      <form method="post">
+      <form @submit.prevent="bookHotel">
         <div class="formControl">
           <label for="name">Name</label>
           <input
@@ -13,8 +13,13 @@
             name="name"
             id="name"
             placeholder="Please Enter your name"
+            v-model.trim="userName"
+            @blur="validateUserName"
+            :class="{ invalid: userNameError }"
           />
-          <small class="error">Hi i am error</small>
+          <small class="error" v-if="userNameError">{{
+            userNameErrorText
+          }}</small>
         </div>
 
         <div class="formControl">
@@ -24,34 +29,183 @@
             name="email"
             id="email"
             placeholder="Please Enter your email"
+            v-model.trim="email"
+            @blur="validateEmail"
+            :class="{ invalid: emailError }"
           />
-          <small class="error">Hi i am error</small>
+          <small class="error" v-if="emailError">{{ emailErrorText }}</small>
         </div>
 
         <div class="formControl">
           <label for="phone">Phone Number</label>
           <input
-            type="number"
+            type="text"
             name="phone"
             id="phone"
             placeholder="Please Enter your phone"
+            v-model.trim="phone"
+            @blur="validatePhone"
+            :class="{ invalid: phoneError }"
           />
-          <small class="error">Hi i am error</small>
+          <small class="error" v-if="phoneError">{{ phoneErrorText }}</small>
         </div>
 
-        <button>Book</button>
+        <button type="submit">Book</button>
       </form>
     </div>
   </div>
 
-  <div class="thankYouContainer" v-if="false">
+  <div class="thankYouContainer" v-else>
     <h1>Thank You For Booking with us</h1>
     <i class="fa-solid fa-check"></i>
   </div>
 </template>
 
 <script>
-export default {};
+import { computed, onMounted, ref } from "vue";
+import { useRoute } from "vue-router";
+
+export default {
+  setup() {
+    const route = useRoute();
+    const id = computed(() => {
+      return route.params.id;
+    });
+
+    const formSubmitted = ref(true);
+
+    let userName = ref(null);
+    let email = ref(null);
+    let phone = ref(null);
+
+    let userNameError = ref(false);
+    let userNameErrorText = ref(null);
+    let emailError = ref(false);
+    let emailErrorText = ref(null);
+    let phoneError = ref(false);
+    let phoneErrorText = ref(null);
+
+    function validateUserName() {
+      let userNameToCheck = userName.value;
+      let userNameRegEx = /^[A-z]+$/;
+
+      if (userNameToCheck == null || userNameToCheck == "") {
+        userNameError.value = true;
+        userNameErrorText.value = "Your Name can't be empty";
+        return;
+      }
+
+      if (!userNameRegEx.test(userNameToCheck)) {
+        userNameError.value = true;
+        userNameErrorText.value = "Your Name must be characters only";
+        return;
+      }
+
+      if (userNameToCheck.length < 5 || userNameToCheck.length > 20) {
+        userNameError.value = true;
+        userNameErrorText.value =
+          "Your Name must be between 5 and 20 characters";
+        return;
+      }
+
+      userNameError.value = false;
+    }
+
+    function validateEmail() {
+      let emailToCheck = email.value;
+      let emailRegEx = /^[A-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$/;
+
+      if (emailToCheck == null || emailToCheck == "") {
+        emailError.value = true;
+        emailErrorText.value = "Your Email can't be empty";
+        return;
+      }
+
+      if (!emailRegEx.test(emailToCheck)) {
+        emailError.value = true;
+        emailErrorText.value = "Please Enter a valid email";
+        return;
+      }
+
+      emailError.value = false;
+    }
+
+    function validatePhone() {
+      let phoneToCheck = phone.value;
+      let phoneRegEx = /^01[0-9]{9}$/;
+
+      if (phoneToCheck == null || phoneToCheck == "") {
+        phoneError.value = true;
+        phoneErrorText.value = "Your Phone Number can't be empty";
+        return;
+      }
+
+      if (!phoneRegEx.test(phoneToCheck)) {
+        phoneError.value = true;
+        phoneErrorText.value =
+          "Please Enter a valid phone number (01xxxxxxxxx)";
+        return;
+      }
+
+      phoneError.value = false;
+    }
+
+    let bookHotel = async () => {
+      validateUserName();
+      validateEmail();
+      validatePhone();
+
+      if (!userNameError.value && !emailError.value && !phoneError.value) {
+        try {
+          let dataSentRequest = await fetch("http://localhost:3000/bookings", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              hotelID: id.value,
+              userName: userName.value,
+              email: email.value,
+              phone: phone.value,
+            }),
+          });
+
+          if (!dataSentRequest.ok) {
+            throw new Error("Data was not sent");
+          }
+
+          userName.value = "";
+          email.value = "";
+          phone.value = "";
+          formSubmitted.value = true;
+        } catch (err) {
+          console.log(err.msg);
+        }
+      }
+    };
+
+    onMounted(() => {
+      formSubmitted.value = false;
+    });
+
+    return {
+      userName,
+      email,
+      phone,
+      bookHotel,
+      userNameError,
+      userNameErrorText,
+      emailError,
+      emailErrorText,
+      phoneError,
+      phoneErrorText,
+      formSubmitted,
+      validateUserName,
+      validateEmail,
+      validatePhone,
+    };
+  },
+};
 </script>
 
 <style scoped>
@@ -96,6 +250,10 @@ input {
 
 input:focus {
   border-bottom: 5px black solid;
+}
+
+input.invalid {
+  border: 1px solid #ac0000;
 }
 
 .error {

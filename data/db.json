@@ -1,4 +1,13 @@
 {
+  "bookings": [
+    {
+      "hotelID": "2",
+      "userName": "Muhammad",
+      "email": "muashrafalii@gmail.com",
+      "phone": "01112049583",
+      "id": 1
+    }
+  ],
   "hotels": [
     {
       "id": 1,

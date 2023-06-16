@@ -4,7 +4,6 @@ const routes = [
   {
     path: "/",
     name: "home",
-    // component: HomeView
     component: () => import("../components/AllHotels.vue"),
   },
   {
@@ -14,13 +13,11 @@ const routes = [
   {
     path: "/all-bookings",
     name: "allBookings",
-    // component: HomeView
     component: () => import("../components/AllBookings.vue"),
   },
   {
-    path: "/book",
+    path: "/book/:id",
     name: "bookingForm",
-    // component: HomeView
     component: () => import("../components/Booking.vue"),
   },
   {
