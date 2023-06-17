@@ -56,9 +56,11 @@
   </div>
 
   <div class="thankYouContainer" v-else>
-    <h1>Thank You For Booking with us</h1>
-    <p>Wait to be redirected</p>
-    <i class="fa-solid fa-check"></i>
+    <MessageVue>
+      <h1>Thank You For Booking with us</h1>
+      <p>Wait to be redirected</p>
+      <i class="fa-solid fa-check"></i>
+    </MessageVue>
   </div>
 </template>
 
@@ -66,8 +68,12 @@
 import { computed, onMounted, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import setBooking from "../composables/setBooking";
+import MessageVue from "./Message.vue";
 
 export default {
+  components: {
+    MessageVue,
+  },
   setup() {
     const route = useRoute();
     const router = useRouter();
@@ -268,27 +274,8 @@ button {
   display: block;
 }
 
-.thankYouContainer {
-  width: 100%;
-  height: 50vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.thankYouContainer * {
-  font-size: 50px;
-}
-
 .thankYouContainer i {
   color: green;
-}
-
-@media (max-width: 700px) {
-  .thankYouContainer * {
-    font-size: 30px;
-  }
 }
 
 @media (max-width: 550px) {
@@ -308,10 +295,6 @@ button {
 
   .error {
     font-size: 10px;
-  }
-
-  .thankYouContainer * {
-    font-size: 20px;
   }
 }
 </style>

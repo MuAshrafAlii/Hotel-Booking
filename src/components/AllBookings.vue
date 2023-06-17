@@ -1,8 +1,14 @@
 <template>
-  <div class="allBookingsContainer">
+  <div class="allBookingsContainer" v-if="bookedHotels.length">
     <div class="bookingContainer" v-for="hotel in bookedHotels" :key="hotel.id">
       <singleBookingVue :hotel="hotel" />
     </div>
+  </div>
+
+  <div v-else>
+    <MessageVue>
+      <p>Sorry, You Have No Bookings</p>
+    </MessageVue>
   </div>
 </template>
 
@@ -10,10 +16,12 @@
 import getHotels from "@/composables/getHotels";
 import { ref } from "vue";
 import singleBookingVue from "./singleBooking.vue";
+import MessageVue from "./Message.vue";
 
 export default {
   components: {
     singleBookingVue,
+    MessageVue,
   },
   setup() {
     let bookedHotels = ref([]);
@@ -24,6 +32,8 @@ export default {
       bookedHotels.value = allHotels.value.filter(
         (hotel) => hotel.booked == true
       );
+
+      console.log(bookedHotels.value.length);
     };
 
     getBookedHotels();

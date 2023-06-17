@@ -40,7 +40,7 @@ import { useRouter } from "vue-router";
 export default {
   props: {
     hotel: {
-      type: Array,
+      type: Object,
       required: true,
     },
   },

@@ -35,7 +35,7 @@ import { useRouter } from "vue-router";
 export default {
   props: {
     hotel: {
-      type: Array,
+      type: Object,
       required: true,
     },
   },
@@ -49,6 +49,8 @@ export default {
       setBookingStatus(hotelID, false);
       router.go();
     }
+
+    return { cancelBooking };
   },
 };
 </script>

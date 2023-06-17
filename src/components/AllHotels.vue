@@ -1,21 +1,27 @@
 <template>
-  <div class="allHotelsContainer">
+  <div class="allHotelsContainer" v-if="allHotels.length">
     <div class="hotelContainer" v-for="hotel in allHotels" :key="hotel.id">
       <HotelVue :hotel="hotel" />
     </div>
   </div>
 
-  <div></div>
+  <div v-else>
+    <MessageVue>
+      <p>Sorry, No Hotels Found</p>
+    </MessageVue>
+  </div>
 </template>
 
 <script>
 import getHotels from "../composables/getHotels.js";
 
 import HotelVue from "./Hotel.vue";
+import MessageVue from "./Message.vue";
 
 export default {
   components: {
     HotelVue,
+    MessageVue,
   },
   setup() {
     let { allHotels, loadHotels } = getHotels();
