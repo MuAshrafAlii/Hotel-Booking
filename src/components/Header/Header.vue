@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import navBarVue from "./navBar.vue";
+import navBarVue from "../Header/navBar.vue";
 
 export default {
   components: {

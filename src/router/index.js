@@ -4,7 +4,7 @@ const routes = [
   {
     path: "/",
     name: "home",
-    component: () => import("../components/AllHotels.vue"),
+    component: () => import("../components/Hotels/AllHotels.vue"),
   },
   {
     path: "/home",
@@ -13,12 +13,12 @@ const routes = [
   {
     path: "/all-bookings",
     name: "allBookings",
-    component: () => import("../components/AllBookings.vue"),
+    component: () => import("../components/Bookings/AllBookings.vue"),
   },
   {
     path: "/book/:id",
     name: "bookingForm",
-    component: () => import("../components/Booking.vue"),
+    component: () => import("../components/BookingForm.vue"),
   },
   {
     path: "/:catchAll(.*)",

@@ -33,7 +33,7 @@
 <script>
 import setBooking from "@/composables/setBooking.js";
 import { useRouter } from "vue-router";
-import RatingVue from "./Rating.vue";
+import RatingVue from "../Utils/Rating.vue";
 export default {
   components: {
     RatingVue,

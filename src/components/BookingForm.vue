@@ -68,7 +68,7 @@
 import { computed, onMounted, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import setBooking from "../composables/setBooking";
-import MessageVue from "./Message.vue";
+import MessageVue from "./Utils/Message.vue";
 
 export default {
   components: {

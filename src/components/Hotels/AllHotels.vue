@@ -13,10 +13,10 @@
 </template>
 
 <script>
-import getHotels from "../composables/getHotels.js";
+import getHotels from "../../composables/getHotels.js";
 
-import HotelVue from "./Hotel.vue";
-import MessageVue from "./Message.vue";
+import HotelVue from "../Hotels/Hotel.vue";
+import MessageVue from "../Utils/Message.vue";
 
 export default {
   components: {

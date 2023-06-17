@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import MessageVue from "./Message.vue";
+import MessageVue from "./Utils/Message.vue";
 export default {
   components: {
     MessageVue,

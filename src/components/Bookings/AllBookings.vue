@@ -15,8 +15,8 @@
 <script>
 import getHotels from "@/composables/getHotels";
 import { ref } from "vue";
-import singleBookingVue from "./singleBooking.vue";
-import MessageVue from "./Message.vue";
+import singleBookingVue from "../Bookings/singleBooking.vue";
+import MessageVue from "../Utils/Message.vue";
 
 export default {
   components: {

@@ -8,8 +8,8 @@
 <script>
 import { onMounted } from "vue";
 import FooterVue from "./components/Footer.vue";
-import HeaderVue from "./components/Header.vue";
-import LoaderVue from "./components/Loader.vue";
+import HeaderVue from "./components/Header/Header.vue";
+import LoaderVue from "./components/Utils/Loader.vue";
 
 export default {
   components: {
