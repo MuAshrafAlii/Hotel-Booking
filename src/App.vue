@@ -1,6 +1,8 @@
 <template>
   <HeaderVue />
-  <router-view />
+  <div class="content">
+    <router-view />
+  </div>
   <FooterVue />
 </template>
 
@@ -16,4 +18,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.content {
+  position: relative;
+}
+</style>

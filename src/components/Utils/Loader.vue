@@ -13,12 +13,13 @@ export default {};
 <style scoped>
 .loaderContainer {
   width: 100%;
-  height: 100vh;
+  min-height: 50vh;
+  height: 100%;
   background: white;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: fixed;
+  position: absolute;
   top: 0;
   z-index: 30;
 }

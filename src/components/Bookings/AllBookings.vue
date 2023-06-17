@@ -50,6 +50,7 @@ export default {
 <style scoped>
 .allBookingsContainer {
   margin: 10vh 5vw;
+  position: relative;
 }
 
 .bookingContainer {
