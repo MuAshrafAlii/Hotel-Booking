@@ -10,23 +10,35 @@
       <p>Sorry, No Hotels Found</p>
     </MessageVue>
   </div>
+
+  <LoaderVue v-if="loading" />
 </template>
 
 <script>
+import { ref } from "vue";
 import getHotels from "../../composables/getHotels.js";
 
 import HotelVue from "../Hotels/Hotel.vue";
+import LoaderVue from "../Utils/Loader.vue";
 import MessageVue from "../Utils/Message.vue";
 
 export default {
   components: {
     HotelVue,
     MessageVue,
+    LoaderVue,
   },
   setup() {
     let { allHotels, loadHotels } = getHotels();
-    loadHotels();
-    return { allHotels };
+    let loading = ref(true);
+
+    let getHotelsAfterLoading = async () => {
+      await loadHotels();
+      loading.value = false;
+    };
+
+    getHotelsAfterLoading();
+    return { allHotels, loading };
   },
 };
 </script>

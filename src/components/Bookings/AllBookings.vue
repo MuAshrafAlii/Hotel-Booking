@@ -10,6 +10,8 @@
       <p>Sorry, You Have No Bookings</p>
     </MessageVue>
   </div>
+
+  <LoaderVue v-if="loading" />
 </template>
 
 <script>
@@ -17,14 +19,17 @@ import getHotels from "@/composables/getHotels";
 import { ref } from "vue";
 import singleBookingVue from "../Bookings/singleBooking.vue";
 import MessageVue from "../Utils/Message.vue";
+import LoaderVue from "../Utils/Loader.vue";
 
 export default {
   components: {
     singleBookingVue,
     MessageVue,
+    LoaderVue,
   },
   setup() {
     let bookedHotels = ref([]);
+    let loading = ref(true);
 
     let getBookedHotels = async () => {
       let { allHotels, loadHotels } = getHotels();
@@ -32,13 +37,12 @@ export default {
       bookedHotels.value = allHotels.value.filter(
         (hotel) => hotel.booked == true
       );
-
-      console.log(bookedHotels.value.length);
+      loading.value = false;
     };
 
     getBookedHotels();
 
-    return { bookedHotels };
+    return { bookedHotels, loading };
   },
 };
 </script>
