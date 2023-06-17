@@ -5,11 +5,7 @@
 
   <div class="titleRatingContainer">
     <h1 class="hotelName">{{ hotel.name }}</h1>
-    <div class="rating">
-      <span v-for="i in 5" :key="i">
-        <i :class="i <= hotel.rating ? 'fa fa-star active' : 'fa fa-star'"></i>
-      </span>
-    </div>
+    <RatingVue :rating="hotel.rating" />
   </div>
 
   <div class="detailsContainer">
@@ -37,7 +33,11 @@
 <script>
 import setBooking from "@/composables/setBooking.js";
 import { useRouter } from "vue-router";
+import RatingVue from "./Rating.vue";
 export default {
+  components: {
+    RatingVue,
+  },
   props: {
     hotel: {
       type: Object,
