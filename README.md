@@ -2,18 +2,14 @@
 
 ## Project setup
 ```
-npm install
-```
+1) Clone The repo
+  git clone https://github.com/MuAshrafAlii/Hotel-Booking.git
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+2) npm install
 
-### Compiles and minifies for production
+3) Open 2 Terminals
+- Run JSON SERVER on the first terminal
+  json-server --watch "data/db.json"
+- Run VueJS Project on the other terminal
+  npm run serve
 ```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
