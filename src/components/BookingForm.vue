@@ -1,7 +1,7 @@
 <template>
   <div class="bookingContainer" v-if="!formSubmitted">
     <div class="imgContainer">
-      <img src="/imgs/hotelbkgr.jpg" alt="Hotel Image" />
+      <img :src="banner" alt="Hotel Image" />
     </div>
 
     <div class="formContainer">
@@ -80,6 +80,10 @@ export default {
     let { setBookingStatus } = setBooking();
     const id = computed(() => {
       return route.params.id;
+    });
+
+    const banner = computed(() => {
+      return route.query.img;
     });
 
     const formSubmitted = ref(true);
@@ -166,7 +170,7 @@ export default {
       validatePhone();
 
       if (!userNameError.value && !emailError.value && !phoneError.value) {
-        setBookingStatus(id.value, true);
+        await setBookingStatus(id.value, true);
 
         userName.value = "";
         email.value = "";
@@ -184,6 +188,7 @@ export default {
     });
 
     return {
+      banner,
       userName,
       email,
       phone,

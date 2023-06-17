@@ -16,7 +16,12 @@
       </span>
     </p>
 
-    <router-link :to="{ name: 'bookingForm', params: { id: hotel.id } }"
+    <router-link
+      :to="{
+        name: 'bookingForm',
+        params: { id: hotel.id },
+        query: { img: hotel.image },
+      }"
       ><button class="bookBtn" v-if="!hotel.booked">Book Now</button>
     </router-link>
     <button
