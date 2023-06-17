@@ -60,7 +60,7 @@
 
   <div class="thankYouContainer" v-else>
     <MessageVue>
-      <h1>Thank You For Booking with us</h1>
+      <h1>Thank You {{ userName }} For Booking with us</h1>
       <p>Wait to be redirected</p>
       <i class="fa-solid fa-check"></i>
     </MessageVue>

@@ -14,7 +14,7 @@
       "rating": 4,
       "address": "301 Park Ave, New York, NY 10022",
       "image": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-      "booked": false
+      "booked": true
     },
     {
       "id": 3,
@@ -46,7 +46,7 @@
       "rating": 5,
       "address": "1535 Broadway, New York, NY 10036",
       "image": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1032&q=80",
-      "booked": false
+      "booked": true
     },
     {
       "id": 7,
