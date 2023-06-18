@@ -97,7 +97,7 @@ nav > a:last-child {
   margin-left: 10px;
 }
 
-.navContainer.scrolled nav > a.active-link {
+.navContainer nav > a.active-link {
   color: white;
   background: #0f526d;
 }
