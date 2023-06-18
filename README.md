@@ -7,6 +7,8 @@
 
 2) npm install
 
+3) npm install -g json-server (To be able to run json-server command)
+
 3) Open 2 Terminals
 - Run JSON SERVER on the first terminal
   json-server --watch "data/db.json"
