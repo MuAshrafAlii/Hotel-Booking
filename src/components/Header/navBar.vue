@@ -88,8 +88,8 @@ nav > a {
 }
 
 .navContainer.scrolled nav > a {
-  color: white;
-  background: #0f526d;
+  color: black;
+  border: 1px black solid;
   transition: all 0.3s;
 }
 
@@ -97,9 +97,9 @@ nav > a:last-child {
   margin-left: 10px;
 }
 
-.active-link {
-  text-decoration-line: underline;
-  text-decoration-style: double;
+.navContainer.scrolled nav > a.active-link {
+  color: white;
+  background: #0f526d;
 }
 
 @media (max-width: 800px) {

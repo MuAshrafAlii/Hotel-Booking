@@ -60,7 +60,7 @@
 
   <div class="thankYouContainer" v-else>
     <MessageVue>
-      <h1>Thank You {{ userName }} For Booking with us</h1>
+      <h1>Thank You For Booking with us</h1>
       <p>Wait to be redirected</p>
       <i class="fa-solid fa-check"></i>
     </MessageVue>
@@ -222,7 +222,7 @@ export default {
 }
 
 .formContainer {
-  margin: 10px;
+  margin: 30px;
 }
 
 form {
@@ -230,7 +230,7 @@ form {
 }
 
 .formControl {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .formControl label {
@@ -265,11 +265,11 @@ input {
 button {
   width: 50%;
   font-size: 40px;
-  padding: 0.5em;
+  padding: 0.2em;
   margin: 0px auto;
   border: none;
   outline: none;
-  background: #198754;
+  background: #0071c2;
   color: white;
   font-weight: 800;
   cursor: pointer;

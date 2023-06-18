@@ -119,6 +119,6 @@ export default {
 }
 
 .bookBtn {
-  background: #198754;
+  background: #0071c2;
 }
 </style>
